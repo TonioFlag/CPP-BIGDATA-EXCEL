@@ -2,7 +2,8 @@
 
 namespace fs = std::filesystem;
 
-std::vector<std::pair<std::string, std::string>> buscarArchivosClasificados(const std::string& carpeta) {
+std::vector<std::pair<std::string, std::string>> buscarArchivosClasificados(const std::string& carpeta,
+                                                                            const std::vector<std::string>& palabrasClave) {
     std::vector<std::pair<std::string, std::string>> archivos;
 
     if (!fs::exists(carpeta) || !fs::is_directory(carpeta)) {
@@ -13,18 +14,12 @@ std::vector<std::pair<std::string, std::string>> buscarArchivosClasificados(cons
         if (!entry.is_regular_file()) continue;
 
         std::string filename = entry.path().filename().string();
-        std::string filename_lower = filename;
-        std::transform(filename_lower.begin(), filename_lower.end(), filename_lower.begin(), ::tolower);
+        std::string filename_upper = filename;
+        std::transform(filename_upper.begin(), filename_upper.end(), filename_upper.begin(), ::toupper);
 
-        if (filename_lower.ends_with(".xlsx")) {
-            if (filename_lower.find("ugp1") != std::string::npos) {
-                archivos.emplace_back("UGP1", entry.path().string());
-            } else if (filename_lower.find("juridica") != std::string::npos) {
-                archivos.emplace_back("JURIDICA", entry.path().string());
-            } else if (filename_lower.find("vigente") != std::string::npos) {
-                archivos.emplace_back("VIGENTE", entry.path().string());
-            } else if (filename_lower.find("castigada") != std::string::npos) {
-                archivos.emplace_back("CASTIGADA", entry.path().string());
+        for (const std::string& palabraClave: palabrasClave){
+            if (filename_upper.find(palabraClave) != std::string::npos){
+                archivos.emplace_back(palabraClave, entry.path().string());
             }
         }
     }

@@ -36,7 +36,7 @@ ValorDato getColumnValue(OpenXLSX::XLCell& cell, const std::string& tipo) {
 
     switch (cell.value().type()) {
         case OpenXLSX::XLValueType::Empty:
-            return "";
+            string_representation_of_value = std::string("");
         case OpenXLSX::XLValueType::String: { // Usar bloque para ámbito de variables temporales
             string_representation_of_value = cell.value().get<std::string>();
             std::string temp_val_upper = string_representation_of_value;
@@ -44,7 +44,7 @@ ValorDato getColumnValue(OpenXLSX::XLCell& cell, const std::string& tipo) {
             // Si es una cadena vacía o valores "nulos", retornamos una cadena vacía inmediatamente.
             // Esto evita intentar convertir "NA" o "NULL" a números, por ejemplo.
             if (temp_val_upper == "NA" || temp_val_upper == "N/A" || temp_val_upper == "NULL" || string_representation_of_value.empty()) {
-                string_representation_of_value = ""; // Devuelve una cadena vacía como ValorDato
+                string_representation_of_value = std::string(""); // Devuelve una cadena vacía como ValorDato
             }
             // Si no es un valor "nulo" y es una cadena, la dejamos para limpieza y posible conversión.
             break;

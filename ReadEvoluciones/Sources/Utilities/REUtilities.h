@@ -22,7 +22,8 @@ struct RowData {
 };
 
 // ---- archivos.h ----
-std::vector<std::pair<std::string, std::string>> buscarArchivosClasificados(const std::string& carpeta = "Datos/");
+std::vector<std::pair<std::string, std::string>> buscarArchivosClasificados(const std::string& carpeta,
+                                                                            const std::vector<std::string>& palabrasClave);
 
 // ---- diccionario.h ----
 std::unordered_map<std::string, std::string> cargarDiccionarioDesdeCSV(const std::string& path);
@@ -36,3 +37,9 @@ std::vector<RowData> read_excel_file(const std::string& file_path,
                                      const std::string& name_evol,
                                      const std::unordered_map<std::string, std::string>& columnasEsperadas,
                                      const std::unordered_map<std::string, std::string>& nombreCanonical);
+
+// ---- csv_reader.h -----
+std::vector<RowData> read_csv_file(const std::string& file_path,
+                                   const std::string& name_evol,
+                                   const std::unordered_map<std::string, std::string>& columnasEsperadas,
+                                   const std::unordered_map<std::string, std::string>& nombreCanonical);

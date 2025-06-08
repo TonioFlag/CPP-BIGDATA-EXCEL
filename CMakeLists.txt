@@ -19,6 +19,7 @@ FetchContent_MakeAvailable(OpenXLSX)
 add_executable(${PROJECT_NAME} 
     ReadEvoluciones/main.cpp
     ReadEvoluciones/Sources/archivos.cpp
+    ReadEvoluciones/Sources/csv_reader.cpp
     ReadEvoluciones/Sources/diccionario.cpp
     ReadEvoluciones/Sources/excel_reader.cpp
     ReadEvoluciones/Sources/limpieza.cpp

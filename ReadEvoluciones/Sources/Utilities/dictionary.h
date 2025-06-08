@@ -54,12 +54,12 @@ const inline std::unordered_map<std::string, std::string> REEMPLAZOS_RAW = {
     {"\t", " "}, {"\r", ""}, {"\n", " "},
     {"\u200b", ""}, {"\uFEFF", ""},
 
-    // --- 7. Casos de "rotura" específicos y errores comunes de codificación/OCR (ej. tu "afa~") ---
+    // --- 7. Casos de "rotura" específicos y errores comunes de codificación/OCR (ej. tu "afa~") --- /*{"1", "i"},*/
     {"Ã­", "i"}, {"Ã¬", "i"}, {"Ã¯", "i"}, {"Ã®", "i"},
     {"Ã‰", "E"}, {"ÃŒ", "I"}, {"Ã?", "i"}, {"ÃI", "I"},
     {"afa~", "i"}, {"AfA~", "I"},
     {"i'", "i"}, {"I'", "I"}, {"i`", "i"}, {"I`", "I"}, {"i?", "i"}, {"I?", "I"},
-    {"î", "i"}, {"ï", "i"}, {"l", "i"}, {"1", "i"}, {"í-", "i"}, {"I-", "I"},
+    {"î", "i"}, {"ï", "i"}, {"l", "i"}, {"í-", "i"}, {"I-", "I"},
     {"ì", "i"}, {"î", "i"}, {"ï", "i"}, {"Ì", "I"}, {"Î", "I"}, {"Ï", "I"},
 
     // --- 8. Errores de codificación de dos bytes a un carácter simple (mojibake) ---
@@ -86,7 +86,7 @@ const inline std::unordered_map<std::string, std::string> REEMPLAZOS_RAW = {
     {"Ã\u00AD", "i"},
 
     // --- 11. Errores de OCR comunes (ej. números que parecen letras o viceversa) ---
-    {"l", "1"}, {"O", "0"}, {"o", "0"}, {"S", "5"}, {"B", "8"}, {"Z", "2"},
+    //{"l", "1"}, {"O", "0"}, {"o", "0"}, {"S", "5"}, {"B", "8"}, {"Z", "2"},
 
     // --- 12. Normalización de puntuación compleja a simple ---
     {"!", ""}, {"?", ""}, {"(", ""}, {")", ""},
