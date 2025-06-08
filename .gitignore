@@ -1,6 +1,7 @@
 build/
 Datos/
 Constants/
+resultado_unico.txt
 
 .vscode
 .env
