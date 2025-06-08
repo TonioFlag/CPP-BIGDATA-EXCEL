@@ -1,0 +1,7 @@
+build/
+Datos/
+Constants/
+
+.vscode
+.env
+*.xlsx
